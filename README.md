@@ -7,7 +7,7 @@ We wish to generate nonoverlapping aggregate gtf. For details refer [here](http:
 
     python /home/parashar/anaconda3/lib/R/library/DEXSeq/python_scripts/dexseq_prepare_annotation.py -r no /home/parashar/archive/rnaseq/gencode.v33.annotation.gtf gencode.v33.gff 2> gff.stderr
 
-DEXSeq doesnot work with BAM files though theyclaim it cam. So convert the bams to sam files using samtools view subcommand.
+DEXSeq doesnot work with BAM files though they claim it can. So convert the bams to sam files using samtools view subcommand.
 
     while read p
     do
