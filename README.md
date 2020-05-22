@@ -1,6 +1,7 @@
 # DEXSeq_protocol
 Create a conda environmanet with python 2.7
 Preparing the DEXSeq compatible gff.
+We wish to generate nonoverlapping aggregate gtf. For details refer [here](http://seqanswers.com/forums/showthread.php?t=41551). I chose to do it because for some reason 
 
     python /home/parashar/anaconda3/lib/R/library/DEXSeq/python_scripts/dexseq_prepare_annotation.py /home/parashar/archive/rnaseq/gencode.v33.annotation.gtf gencode.v33.gff 2> gff.stderr
 
