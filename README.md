@@ -1,5 +1,6 @@
 # DEXSeq_protocol
-Create a conda environmanet with python 2.7
+Create a conda environmanet with python 2.7. I installed DEXSeq in via conda in python3 but used the script in python2,7 environment because fo the syntax error.
+
 Preparing the DEXSeq compatible gff.
 We wish to generate nonoverlapping aggregate gtf. For details refer [here](http://seqanswers.com/forums/showthread.php?t=41551). 
 > In the process of forming the counting bins, the script might come across overlapping genes. If two genes on the same strand are found
