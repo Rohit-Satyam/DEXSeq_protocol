@@ -16,3 +16,4 @@ DEXSeq doesnot work with BAM files though they claim it can. So convert the bams
     bsub -o $name.o -e $name.e -n 10 -q regularq "python /home/parashar/anaconda3/lib/R/library/DEXSeq/python_scripts/dexseq_count.py -p yes -r pos -s reverse -a 10 gencode.v33.gff $p ${name}.Readcounts.txt 2> ${name}.stderr"
     done < list
 
+Difference between the expression and exon usgae can be understood from [here](https://support.bioconductor.org/p/64007/) and [here](https://www.biostars.org/p/126119/)
