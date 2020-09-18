@@ -265,7 +265,8 @@ Read more about options [here](https://bioconductor.org/packages/release/bioc/vi
 Always try to retain the BAM file.
 
 4. **Differential Exon Usage Analysis:**
-Use Rstudio to run this script
+Use Rstudio to run this script. Bear in mind that this is Differential exon usage not differential exon expression. They are two different thing. Difference between the exon expression and exon usgae can be understood from [here](https://support.bioconductor.org/p/64007/) and [here](https://www.biostars.org/p/126119/)
+
 
 For design formula: [example 1](https://support.bioconductor.org/p/59532/),  [example 2](https://support.bioconductor.org/p/109853/)
 ```r
