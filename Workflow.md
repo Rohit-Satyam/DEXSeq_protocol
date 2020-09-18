@@ -56,7 +56,7 @@ conda install --name $env_name -c r -y r-essentials
 conda install --name $env_name -c bioconda -y rsem
 conda install --name $env_name -c bioconda -y star
 ```
-Activate the environment using conda activate env_name.
+Activate the environment using `conda activate env_name`.
 To install DEXSeq package in R, either use the following command, or paste the commands being echoed into RStudio.
 ```
 echo 'if (!requireNamespace("BiocManager", quietly = TRUE))
