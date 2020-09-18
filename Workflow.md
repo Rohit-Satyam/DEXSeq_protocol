@@ -1,3 +1,6 @@
+
+
+
 # DexSeq Workflow
 The DexSeq workflow will enable you to estimate the differential exon usage in comparative RNA-Seq experiments.
 >By _differential exon usage_ (DEU), we mean changes in the relative usage of exons caused by the experimental condition. The relative usage of an exon is defined as: 
@@ -139,11 +142,12 @@ Listed below are additional parameters that we will use in our command:
 STAR --genomeDir /path to/star/indexes/ \
 --runThreadN 6 \
 --readFilesCommand zcat \
---readFilesIn path/file_R1.fastq.gz file_R2.fastq.gz \
---outFileNamePrefix ../results/STAR/Mov10_oe_1_ \
+--readFilesIn path/sample_R1.fastq.gz sample_R2.fastq.gz \
+--outFileNamePrefix ../results/STAR/sample \
 --outSAMtype BAM SortedByCoordinate \
 --outSAMunmapped Within \
---outSAMattributes Standard 
+--outSAMattributes Standard \
+2> /path/to_save_log/sample_prefix.log
 ```
 Using RSEM
 While using RSEM, try to information about the strandedness of the RNASeq library, like if the sense or antisense library was produced and change the option accordingly. RSEM uses this option essentially to produce a read count file containing the TPM & FPKM values. You will also be requiring the strandedness information while using `HTSeq`.
@@ -375,7 +379,8 @@ dxd = estimateDispersions( dxd, formula = formulaFullModel )
 #Warning message:
 #  In lfproc(x, y, weights = weights, cens = cens, base = base, geth = geth,  :
 #              Estimated rdf < 1.0; not estimating variance
-#Seems, the software cannot find parameters a and b to fit the dispersion over mean trend using that formula. The better the prediction, the less error there is in that prediction. A PRE statistic takes values between 0 and 1. 0 means no reduction in error, 1 means that there is perfect prediction—the error is completely eliminated
+#Seems, the software cannot find parameters a and b to fit the dispersion over mean trend using that formula. The better the prediction, the less error there is in that prediction. 
+#A PRE statistic takes values between 0 and 1. 0 means no reduction in error, 1 means that there is perfect prediction—the error is completely eliminated
 
 
 dxd = testForDEU( dxd, reducedModel = formulaReducedModel, fullModel = formulaFullModel )
@@ -390,12 +395,12 @@ plotDEXSeq( dxr2, "ENSG00000132604.11", legend=TRUE, cex.axis=1.2, cex=1.3, lwd=
 ## View Transcripts. DEXSeq is designed to find changes in relative exon usage, i.e., changes in the expression of individual exons that are not simply the consequence of overall up- or down-regulation of the gene.
 library(grid, lib.loc = "C:/Program Files/R/R-3.6.2/library")
 png("test.png", width = 10, height = 9, units = 'in', res = 700)
-#After correction for Passages
+#After correction for Passages (cell harvasted at different time points, referring to the group column )
 plotDEXSeq( dxr2, "ENSG00000132604.11", displayTranscripts=TRUE, expression=FALSE, splicing=TRUE,legend=TRUE, cex.axis=1.2, cex=1.3, lwd=2 )
 dev.off()
 
 #DEXSeqHTML( dxr2, FDR=0.1, path=".",file="testForDEU.html", color=c("#FF000080", "#0000FF80") )
 
-#Before correction for passages
+#Before correction for passages (cell harvasted at different time points, referring to the group column )
 plotDEXSeq( dxr1, "ENSG00000132604.11", expression=FALSE, splicing=TRUE,legend=TRUE, cex.axis=1.2, cex=1.3, lwd=2,FDR=0.2 )
 ```
