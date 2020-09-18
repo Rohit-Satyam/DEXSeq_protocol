@@ -55,7 +55,10 @@ conda install --name $env_name -c bioconda -c conda-forge -y multiqc
 conda install --name $env_name -c r -y r-essentials
 conda install --name $env_name -c bioconda -y rsem
 conda install --name $env_name -c bioconda -y star
-
+```
+Activate the environment using conda activate env_name.
+To install DEXSeq package in R, either use the following command, or paste the commands being echoed into RStudio.
+```
 echo 'if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
     BiocManager::install("DEXSeq", dependencies = TRUE)
@@ -149,8 +152,8 @@ STAR --genomeDir /path to/star/indexes/ \
 --outSAMattributes Standard \
 2> /path/to_save_log/sample_prefix.log
 ```
-Using RSEM
-While using RSEM, try to information about the strandedness of the RNASeq library, like if the sense or antisense library was produced and change the option accordingly. RSEM uses this option essentially to produce a read count file containing the TPM & FPKM values. You will also be requiring the strandedness information while using `HTSeq`.
+**Using RSEM**
+While using RSEM, try to get information about the strandedness of the RNASeq library, like if the sense or antisense library was produced and change the option accordingly. RSEM uses this option essentially to produce a read count file containing the TPM & FPKM values. You will also be requiring the strandedness information while using `HTSeq`.
 ```bash
 rsem-calculate-expression --star-output-genome-bam \
 --strandedness reverse \
@@ -176,6 +179,7 @@ rsem-calculate-expression --star-output-genome-bam \
 - `--sort-bam-by-coordinate` Sort RSEM generated transcript and genome BAM files by coordinates and build associated indices. (Default: off)
 
 RSEM uses ENCODE3 pipeline golden standard parameters. Therefore, I prefer using RSEM besides STAR.
+
 #### Rationale of using above parameters
 
  - `--estimate-rspd` option should be specified so that RSEM can estimate a read start position distribution (RSPD), which may allow for more
