@@ -63,8 +63,8 @@ echo 'if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
     BiocManager::install("DEXSeq", dependencies = TRUE)
     library(DEXSeq)
-    pythonScriptsDir = system.file( "python_scripts", package="DEXSeq" )
-    write.csv(pythonScriptsDir, file = "Dexseq_path.csv")
+    pythonScriptsDir = system.file( "python_scripts", package="DEXSeq" )        ##locate where the DEXSeq python scripts are located
+    write.csv(pythonScriptsDir, file = "Dexseq_path.csv")                       ##save path in a .csv file. U can write text file using writelines function: https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/writeLines
     exit
     ' > dexseq_prep.R
 Rscript dexseq_prep.R
